@@ -35,7 +35,7 @@
 #define ISEMPTY(T)              std::is_empty<T>::value
 #define ISLITERALTYPE(T)        std::is_literal_type<T>::value
 #define ISPOD(T)                std::is_pod<T>::value
-#define ISPOLYMORPHIC(T)           std::is_polymorphic<T>::value
+#define ISPOLYMORPHIC(T)        std::is_polymorphic<T>::value
 #define ISSIGNED(T)             std::is_signed<T>::value
 #define ISSTDLAYOUT(T)          std::is_standard_layout<T>::value
 #define ISTRIVIAL(T)            std::is_trivial<T>::value
@@ -44,31 +44,31 @@
 #define ISVOLATILE(T)           std::is_volatile<T>::value
 
 //Type features
-#define HASVIRTUALDTOR(T)                   std::has_virutal_destructor<T>::value
-#define ISASSIGNABLE(T)                     std::is_assignable<T>::value
-#define ISCONSTRUCTIBLE(T)                  std::is_constructible<T>::value
-#define ISCOPYASSIGNABLE(T)                 std::is_copy_assignable<T>::value
-#define ISCOPYCONSTRUCTIBLE(T)              std::is_copy_constructible<T>::value
-#define ISDESTRUCTIBLE(T)                   std::is_destructible<T>::value
-#define ISDEFAULTCONSTRUCTIBLE(T)           std::is_default_constructible<T>::value
-#define ISMOVEASSIGNABLE(T)                 std::is_move_assignable<T>::value
-#define ISMOVECONSTRUCTIBLE(T)              std::is_move_constructible<T>::value
-#define ISTRIVIALLYASSIGNABLE(T)            std::is_trivially_assignable<T>::value
-#define ISTRIVIALLYCONSTRUCTIBLE(T)         std::is_trivially_constructible<T>::value
-#define ISTRIVIALLYCOPYASSIGNABLE(T)        std::is_trivially_copy_assignable<T>::value
-#define ISTRIVIALLYCOPYCONSTRUCTIBLE(T)     std::is_trivially_copy_constructible<T>::value
-#define ISTRIVIALLYDESTRUCTIBLE(T)          std::is_trivially_destructible<T>::value
-#define ISTRIVIALLYDEFAULTCONSTRUCTIBLE(T)  std::is_trivially_default_constructible<T>::value
-#define ISTRIVIALLYMOVEASSIGNABLE(T)        std::is_trivially_move_assignable<T>::value
-#define ISTRIVIALLYMOVECONSTRUCTIBLE(T)     std::is_trivially_move_constructible<T>::value
-#define ISNOTHROWASSIGNABLE(T)              std::is_nothrow_assignable<T>::value
-#define ISNOTHROWCONSTRUCTIBLE(T)           std::is_nothrow_constructible<T>::value
-#define ISNOTHROWCOPYASSIGNABLE(T)          std::is_nothrow_copy_assignable<T>::value
-#define ISNOTHROWCOPYCONSTRUCTIBLE(T)       std::is_nothrow_copy_constructible<T>::value
-#define ISNOTHROWDESTRUCTIBLE(T)            std::is_nothrow_destructible<T>::value
-#define ISNOTHROWDEFAULTCONSTRUCTIBLE(T)    std::is_nothrow_default_constructible<T>::value
-#define ISNOTHROWMOVEASSIGNABLE(T)          std::is_nothrow_move_assignable<T>::value
-#define ISNOTHROWMOVECONSTRUCTIBLE(T)       std::is_nothrow_move_constructible<T>::value
+#define HASVIRTUALDTOR(T)                       std::has_virutal_destructor<T>::value
+#define ISASSIGNABLE(A, B)                      std::is_assignable<A, B>::value
+#define ISCONSTRUCTIBLE(T, Args...)             std::is_constructible<T, Args>::value
+#define ISCOPYASSIGNABLE(T)                     std::is_copy_assignable<T>::value
+#define ISCOPYCONSTRUCTIBLE(T)                  std::is_copy_constructible<T>::value
+#define ISDESTRUCTIBLE(T)                       std::is_destructible<T>::value
+#define ISDEFAULTCONSTRUCTIBLE(T)               std::is_default_constructible<T>::value
+#define ISMOVEASSIGNABLE(T)                     std::is_move_assignable<T>::value
+#define ISMOVECONSTRUCTIBLE(T)                  std::is_move_constructible<T>::value
+#define ISTRIVIALLYASSIGNABLE(A, B)             std::is_trivially_assignable<A, B>::value
+#define ISTRIVIALLYCONSTRUCTIBLE(T, Args...)    std::is_trivially_constructible<T, Args>::value
+#define ISTRIVIALLYCOPYASSIGNABLE(T)            std::is_trivially_copy_assignable<T>::value
+#define ISTRIVIALLYCOPYCONSTRUCTIBLE(T)         std::is_trivially_copy_constructible<T>::value
+#define ISTRIVIALLYDESTRUCTIBLE(T)              std::is_trivially_destructible<T>::value
+#define ISTRIVIALLYDEFAULTCONSTRUCTIBLE(T)      std::is_trivially_default_constructible<T>::value
+#define ISTRIVIALLYMOVEASSIGNABLE(T)            std::is_trivially_move_assignable<T>::value
+#define ISTRIVIALLYMOVECONSTRUCTIBLE(T)         std::is_trivially_move_constructible<T>::value
+#define ISNOTHROWASSIGNABLE(A, B)               std::is_nothrow_assignable<A, B>::value
+#define ISNOTHROWCONSTRUCTIBLE(T, Args...)      std::is_nothrow_constructible<T, Args>::value
+#define ISNOTHROWCOPYASSIGNABLE(T)              std::is_nothrow_copy_assignable<T>::value
+#define ISNOTHROWCOPYCONSTRUCTIBLE(T)           std::is_nothrow_copy_constructible<T>::value
+#define ISNOTHROWDESTRUCTIBLE(T)                std::is_nothrow_destructible<T>::value
+#define ISNOTHROWDEFAULTCONSTRUCTIBLE(T)        std::is_nothrow_default_constructible<T>::value
+#define ISNOTHROWMOVEASSIGNABLE(T)              std::is_nothrow_move_assignable<T>::value
+#define ISNOTHROWMOVECONSTRUCTIBLE(T)           std::is_nothrow_move_constructible<T>::value
 
 //Type relationships
 #define ISBASEOF(A, B)                      std::is_base_of<A, B>::value
@@ -121,24 +121,24 @@
 
 //Type features
 #define HASVIRTUALDTORFUNC                  _FDPROTO(HASVIRTUALDTOR(T))
-#define ASSIGNABLEFUNC                      _FDPROTO(ISASSIGNABLE(T))
-#define CONSTRUCTIBLEFUNC                   _FDPROTO(ISCONSTRUCTIBLE(T))
+#define ASSIGNABLEFUNC                      _FDPROTO(ISASSIGNABLE(A, B))
+#define CONSTRUCTIBLEFUNC                   _FDPROTO(ISCONSTRUCTIBLE(T, Args))
 #define COPYASSIGNABLEFUNC                  _FDPROTO(ISCOPYASSIGNABLE(T))
 #define COPYCONSTRUCTIBLEFUNC               _FDPROTO(ISCOPYCONSTRUCTIBLE(T))
 #define DESTRUCTABLEFUNC                    _FDPROTO(ISDESTRUCTIBLE(T))
 #define DEFAULTCONSTRUCTIBLEFUNC            _FDPROTO(ISDEFAULTCONSTRUCTIBLE(T))
 #define MOVEASSIGNABLEFUNC                  _FDPROTO(ISMOVEASSIGNABLE(T))
 #define MOVECONSTRUCTIBLEFUNC               _FDPROTO(ISMOVECONSTRUCTIBLE(T))
-#define TRIVIALLYASSIGNABLEFUNC             _FDPROTO(ISTRIVIALLYASSIGNABLE(T))
-#define TRIVIALLYCONSTRUCTIBLE              _FDPROTO(ISTRIVIALLYCONSTRUCTIBLE(T))
+#define TRIVIALLYASSIGNABLEFUNC             _FDPROTO(ISTRIVIALLYASSIGNABLE(A, B))
+#define TRIVIALLYCONSTRUCTIBLE              _FDPROTO(ISTRIVIALLYCONSTRUCTIBLE(T, Args))
 #define TRIVIALLYCOPYASSIGNABLEFUNC         _FDPROTO(ISTRIVIALLYCOPYASSIGNABLE(T))
 #define TRIVIALLYCOPYCONSTRUCTIBLEFUNC      _FDPROTO(ISTRIVIALLYCOPYCONSTRUCTIBLE(T))
 #define TRIVIALLYDESTRUCTIBLEFUNC           _FDPROTO(ISTRIVIALLYDESTRUCTIBLE(T))
 #define TRIVIALLYDEFAULTCONSTRUCTIBLEFUNC   _FDPROTO(ISTRIVIALLYDEFAULTCONSTRUCTIBLE(T))
 #define TRIVIALLYMOVEASSIGNABLEFUNC         _FDPROTO(ISTRIVIALLYMOVEASSIGNABLE(T))
 #define TRIVIALLYMOVECONSTRUCTIBLEFUNC      _FDPROTO(ISTRIVIALLYMOVECONSTRUCTIBLE(T))
-#define NOTHROWASSIGNABLEFUNC               _FDPROTO(ISNOTHROWASSIGNABLE(T))
-#define NOTHROWCONSTRUCTIBLEFUNC            _FDPROTO(ISNOTHROWCONSTRUCTIBLE(T))
+#define NOTHROWASSIGNABLEFUNC               _FDPROTO(ISNOTHROWASSIGNABLE(A, B))
+#define NOTHROWCONSTRUCTIBLEFUNC            _FDPROTO(ISNOTHROWCONSTRUCTIBLE(T, Args))
 #define NOTHROWCOPYASSIGNABLEFUNC           _FDPROTO(ISNOTHROWCOPYASSIGNABLE(T))
 #define NOTHROWCOPYCONSTRUCTIBLEFUNC        _FDPROTO(ISNOTHROWCOPYCONSTRUCTIBLE(T))
 #define NOTHROWDESTRUCTIBLEFUNC             _FDPROTO(ISNOTHROWDESTRUCTIBLE(T))
